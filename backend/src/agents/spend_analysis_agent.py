@@ -74,4 +74,14 @@ class SpendAnalysisAgent(BaseAgent):
         else:
             insights += "\n### ✅ No unusual spending detected."
 
+        analysis_data = {
+            "month": month_label,
+            "total_spent": total_spent,
+            "top_category": max(category_totals, key=category_totals.get),
+            "categories": category_totals,
+            "anomalies": anomalies
+        }
+
+        self.analysis_data = analysis_data
+
         return insights
